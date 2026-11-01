@@ -1,7 +1,4 @@
 import type { Metadata } from "next"
-import { galleryImages } from "@/lib/data"
-import { GalleryGrid } from "@/components/gallery-grid"
-
 export const metadata: Metadata = {
   title: "Gallery | Public History Global",
   description: "A visual archive of historical artifacts, sites, and artwork.",
@@ -21,9 +18,11 @@ export default function GalleryPage() {
         </p>
       </header>
 
-      <div className="mt-10">
-        <GalleryGrid images={galleryImages} />
-      </div>
+      <section className="mt-10 flex min-h-[360px] items-center justify-center rounded-sm border-4 border-dashed border-primary bg-primary/10 px-6 py-16 text-center">
+        <h2 className="font-serif text-5xl font-bold tracking-tight text-primary uppercase sm:text-7xl">
+          Under Construction
+        </h2>
+      </section>
     </div>
   )
 }
