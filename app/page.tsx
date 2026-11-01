@@ -1,42 +1,22 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, BookOpen, Mic, Images } from "lucide-react"
-import { blogPosts, podcastEpisodes, galleryImages } from "@/lib/data"
+import { ArrowRight } from "lucide-react"
 
 export default function HomePage() {
-  const latestPost = blogPosts[0]
-  const latestEpisode = podcastEpisodes[0]
-  const featuredGalleryItem = galleryImages[0]
-
-  const recentWorks = [
-    {
-      kind: "Blog",
-      icon: BookOpen,
-      href: `/blog/${latestPost.slug}`,
-      title: latestPost.title,
-      meta: `${latestPost.region} · ${latestPost.readTime}`,
-      image: latestPost.image,
-    },
-    {
-      kind: "Podcast",
-      icon: Mic,
-      href: "/podcasts",
-      title: latestEpisode.title,
-      meta: `Episode ${latestEpisode.episodeNumber} · ${latestEpisode.duration}`,
-      image: latestEpisode.image,
-    },
-    {
-      kind: "Gallery",
-      icon: Images,
-      href: "/gallery",
-      title: featuredGalleryItem.title,
-      meta: featuredGalleryItem.era,
-      image: featuredGalleryItem.image,
-    },
-  ]
-
   return (
     <div>
+      <section
+        aria-label="Site status"
+        className="border-b-4 border-primary bg-primary px-4 py-10 text-center text-primary-foreground sm:py-14"
+      >
+        <p className="text-4xl font-black tracking-[0.12em] uppercase sm:text-6xl lg:text-8xl">
+          Under Construction
+        </p>
+        <p className="mt-3 text-xs font-semibold tracking-[0.2em] uppercase sm:text-sm">
+          Please check back soon
+        </p>
+      </section>
+
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-border">
         <div className="absolute inset-0">
@@ -88,42 +68,13 @@ export default function HomePage() {
 
       {/* Recent works */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-        <div className="flex items-end justify-between gap-4">
+        <div className="border border-border bg-card px-6 py-16 text-center sm:px-10 sm:py-24">
           <h2 className="font-serif text-2xl font-semibold text-foreground sm:text-3xl">
             Recent works
           </h2>
-        </div>
-        <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-foreground">
-          A sample of our latest writing, audio, and visual research.
-        </p>
-
-        <div className="mt-8 grid gap-6 sm:grid-cols-3">
-          {recentWorks.map((item) => (
-            <Link
-              key={item.title}
-              href={item.href}
-              className="group flex flex-col overflow-hidden rounded-sm border border-border bg-card transition-colors hover:border-primary/60"
-            >
-              <div className="relative aspect-[4/3] w-full overflow-hidden">
-                <Image
-                  src={item.image || "/placeholder.svg"}
-                  alt=""
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-              <div className="flex flex-1 flex-col gap-2 p-5">
-                <div className="flex items-center gap-1.5 text-xs font-semibold tracking-widest text-primary uppercase">
-                  <item.icon className="h-3.5 w-3.5" aria-hidden="true" />
-                  {item.kind}
-                </div>
-                <h3 className="font-serif text-lg leading-snug text-balance text-foreground">
-                  {item.title}
-                </h3>
-                <p className="mt-auto text-xs text-muted-foreground">{item.meta}</p>
-              </div>
-            </Link>
-          ))}
+          <p className="mt-4 text-lg font-semibold tracking-wide text-primary uppercase sm:text-2xl">
+            Check back soon
+          </p>
         </div>
       </section>
     </div>

@@ -1,8 +1,4 @@
 import type { Metadata } from "next"
-import Image from "next/image"
-import { podcastEpisodes } from "@/lib/data"
-import { PodcastPlayer } from "@/components/podcast-player"
-
 export const metadata: Metadata = {
   title: "Podcasts | Public History Global",
   description:
@@ -18,8 +14,6 @@ function formatDate(dateStr: string) {
 }
 
 export default function PodcastsPage() {
-  const [latest, ...rest] = podcastEpisodes
-
   return (
     <div className="mx-auto max-w-4xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
       <header className="max-w-2xl">
@@ -33,74 +27,10 @@ export default function PodcastsPage() {
         </p>
       </header>
 
-      {/* Latest episode, featured */}
-      <section className="mt-10 overflow-hidden rounded-sm border border-border bg-card">
-        <div className="grid sm:grid-cols-[220px_1fr]">
-          <div className="relative aspect-square sm:aspect-auto">
-            <Image
-              src={latest.image || "/placeholder.svg"}
-              alt=""
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="flex flex-col gap-3 p-6 sm:p-8">
-            <p className="text-xs font-semibold tracking-widest text-primary uppercase">
-              Latest · Episode {latest.episodeNumber}
-            </p>
-            <h2 className="font-serif text-xl leading-snug text-balance text-foreground sm:text-2xl">
-              {latest.title}
-            </h2>
-            <p className="text-sm leading-relaxed text-muted-foreground">{latest.description}</p>
-            <p className="text-xs text-muted-foreground">
-              {formatDate(latest.date)} · {latest.duration}
-            </p>
-            <div className="mt-2">
-              <PodcastPlayer episode={latest} />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* All episodes */}
-      <section className="mt-14">
-        <h2 className="font-serif text-xl font-semibold text-foreground sm:text-2xl">
-          All episodes
+      <section className="mt-10 flex min-h-[360px] items-center justify-center rounded-sm border-4 border-dashed border-primary bg-primary/10 px-6 py-16 text-center">
+        <h2 className="font-serif text-5xl font-bold tracking-tight text-primary uppercase sm:text-7xl">
+          Under Construction
         </h2>
-
-        <ul className="mt-6 divide-y divide-border border-t border-border">
-          {rest.map((episode) => (
-            <li key={episode.slug} className="py-6">
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-                <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-sm">
-                  <Image
-                    src={episode.image || "/placeholder.svg"}
-                    alt=""
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="flex-1">
-                  <p className="text-xs font-semibold tracking-widest text-primary uppercase">
-                    Episode {episode.episodeNumber}
-                  </p>
-                  <h3 className="mt-1 font-serif text-lg leading-snug text-balance text-foreground">
-                    {episode.title}
-                  </h3>
-                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                    {episode.description}
-                  </p>
-                  <p className="mt-2 text-xs text-muted-foreground">
-                    {formatDate(episode.date)} · {episode.duration}
-                  </p>
-                  <div className="mt-3 max-w-md">
-                    <PodcastPlayer episode={episode} />
-                  </div>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
       </section>
     </div>
   )
