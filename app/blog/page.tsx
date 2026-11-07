@@ -28,11 +28,6 @@ export default function BlogPage() {
         </p>
       </header>
 
-      <section className="mt-10 flex min-h-[360px] items-center justify-center rounded-sm border-4 border-dashed border-primary bg-primary/10 px-6 py-16 text-center">
-        <h2 className="font-serif text-5xl font-bold tracking-tight text-primary uppercase sm:text-7xl">
-          Under Construction
-        </h2>
-      </section>
     </div>
   )
 }
