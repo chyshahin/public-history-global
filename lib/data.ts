@@ -26,7 +26,7 @@ export const blogPosts: BlogPost[] = [
     date: "2025-12-21",
     region: "Global History",
     readTime: "20 min read",
-    image: "/hero-archive-historical-maps.png",
+    image: "/indian-cotton-global-history.png",
   },
   {
     slug: "silk-road-exchange-networks",
