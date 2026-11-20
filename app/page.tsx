@@ -18,15 +18,22 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/80 to-background" />
         </div>
 
-        <div className="relative mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 sm:py-32 lg:px-8">
-          <p className="text-xs font-semibold tracking-[0.2em] text-primary uppercase">
+        <div className="relative mx-auto max-w-4xl px-4 py-12 text-center sm:px-6 sm:py-16 lg:px-8">
+          <figure className="mx-auto mb-8 max-w-3xl text-left sm:mb-10">
+            <blockquote className="border-l-2 border-primary pl-5 font-serif text-sm leading-relaxed text-foreground sm:pl-7 sm:text-base">
+              <p>
+                In evolutionary time, Homo sapiens emerged very recently, no more than 200,000 years ago. Humans have not physically evolved since, apart from some minor and inherently meaningless variations in skin color, hair, and body shape. According to the latest scientific research, everyone alive today is descended from a small group of anatomically modern humans, Homo sapiens, which emerged in East Africa. Recent genetic studies demonstrate that all mitochondria within human cells descend from a single woman, who lived in Africa between 150,000 and 200,000 years ago.
+              </p>
+            </blockquote>
+            <figcaption className="mt-3 pl-5 text-xs text-muted-foreground sm:pl-7 sm:text-sm">
+              (Kevin Kenny, <cite>Diaspora: A Very Short Introduction</cite> (Oxford: Oxford University Press, 2013), P.17)
+            </figcaption>
+          </figure>
+          <h1 className="text-xs font-semibold tracking-[0.2em] text-primary uppercase">
             Public Debates and Global History
-          </p>
-          <h1 className="mt-5 font-serif text-4xl font-semibold tracking-tight text-balance text-foreground sm:text-5xl">
-            PublicHistoryGlobal
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-balance leading-relaxed text-muted-foreground sm:text-lg">
-            PublicHistoryGlobal is dedicated to enhancing understanding of historical contexts by
+          <p className="mx-auto mt-3 max-w-2xl text-balance leading-relaxed text-muted-foreground sm:text-lg">
+            PublicHistoryOnline is dedicated to enhancing understanding of historical contexts by
             facilitating collaborative discussions and insights, especially in an era characterised
             by the rise of &apos;alternative&apos; information, to foster social cohesion, tolerance, and
             peaceful coexistence—emphasising historical and rational arguments, which are a
@@ -54,17 +61,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Recent works */}
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-        <div className="border border-border bg-card px-6 py-16 text-center sm:px-10 sm:py-24">
-          <h2 className="font-serif text-2xl font-semibold text-foreground sm:text-3xl">
-            Recent works
-          </h2>
-          <p className="mt-4 text-lg font-semibold tracking-wide text-primary uppercase sm:text-2xl">
-            Check back soon
-          </p>
-        </div>
-      </section>
     </div>
   )
 }
