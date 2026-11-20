@@ -9,7 +9,7 @@ export function SiteFooter() {
           <div>
             <div className="flex items-center gap-2 font-serif text-base font-semibold text-foreground">
               <Landmark className="h-4 w-4 text-primary" aria-hidden="true" />
-              Public History Global
+              PublicHistory.Online
             </div>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
               Rigorously researched history, told plainly, for a global audience.
@@ -57,14 +57,14 @@ export function SiteFooter() {
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
-                <span>Public History Global, PO Box 1848, Remote Editorial Collective</span>
+                <span>PublicHistory.Online, PO Box 1848, Remote Editorial Collective</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-10 flex flex-col gap-2 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>&copy; {new Date().getFullYear()} Public History Global. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} PublicHistory.Online. All rights reserved.</p>
           <p>Committed to accurate, source-based history.</p>
         </div>
       </div>

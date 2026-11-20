@@ -18,9 +18,9 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Public History Global',
+  title: 'PublicHistory.Online',
   description:
-    'Accurate, accessible history through blog posts and podcasts — Public History Global brings rigorous research to a general audience.',
+    'Accurate, accessible history through blog posts and podcasts — PublicHistory.Online brings rigorous research to a general audience.',
   generator: 'v0.app',
   icons: {
     icon: [

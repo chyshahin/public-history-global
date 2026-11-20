@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 export const metadata: Metadata = {
-  title: "Gallery | Public History Global",
+  title: "Gallery | PublicHistory.Online",
   description: "A visual archive of historical artifacts, sites, and artwork.",
 }
 

@@ -6,6 +6,7 @@ import Image from "next/image"
 import { notFound } from "next/navigation"
 import { ArrowLeft } from "lucide-react"
 import { blogPosts } from "@/lib/data"
+import { BlogBanner } from "@/components/blog-banner"
 
 function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString("en-US", {
@@ -28,7 +29,7 @@ export async function generateMetadata({
   const post = blogPosts.find((p) => p.slug === slug)
   if (!post) return {}
   return {
-    title: `${post.title} | Public History Global`,
+    title: `${post.title} | PublicHistory.Online`,
     description: post.excerpt,
   }
 }
@@ -43,16 +44,18 @@ export default async function BlogPostPage({
   if (!post) notFound()
 
   return (
-    <article className="mx-auto max-w-3xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
-      <Link
-        href="/blog"
-        className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest text-muted-foreground uppercase hover:text-primary"
-      >
-        <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
-        Back to blog
-      </Link>
+    <>
+      <BlogBanner />
+      <article className="mx-auto max-w-3xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8">
+        <Link
+          href="/blog"
+          className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest text-muted-foreground uppercase hover:text-primary"
+        >
+          <ArrowLeft className="h-3.5 w-3.5" aria-hidden="true" />
+          Back to blog
+        </Link>
 
-      <header className="mt-6">
+        <header className="mt-6">
         <p className="text-xs font-semibold tracking-widest text-primary uppercase">
           {post.region}
         </p>
@@ -118,6 +121,7 @@ export default async function BlogPostPage({
           ))}
         </div>
       )}
-    </article>
+      </article>
+    </>
   )
 }

@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
 export const metadata: Metadata = {
-  title: "Podcasts | Public History Global",
+  title: "Podcasts | PublicHistory.Online",
   description:
-    "Narrative history podcast episodes from Public History Global, covering global history in depth.",
+    "Narrative history podcast episodes from PublicHistory.Online, covering global history in depth.",
 }
 
 function formatDate(dateStr: string) {
