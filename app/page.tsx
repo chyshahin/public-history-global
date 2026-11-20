@@ -5,18 +5,6 @@ import { ArrowRight } from "lucide-react"
 export default function HomePage() {
   return (
     <div>
-      <section
-        aria-label="Site status"
-        className="border-b-4 border-primary bg-primary px-4 py-10 text-center text-primary-foreground sm:py-14"
-      >
-        <p className="text-4xl font-black tracking-[0.12em] uppercase sm:text-6xl lg:text-8xl">
-          Under Construction
-        </p>
-        <p className="mt-3 text-xs font-semibold tracking-[0.2em] uppercase sm:text-sm">
-          Please check back soon
-        </p>
-      </section>
-
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-border">
         <div className="absolute inset-0">

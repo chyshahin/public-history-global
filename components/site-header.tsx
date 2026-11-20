@@ -26,7 +26,7 @@ export function SiteHeader() {
           onClick={() => setOpen(false)}
         >
           <Landmark className="h-5 w-5 text-primary" aria-hidden="true" />
-          <span>Public History Global</span>
+          <span>PublicHistory.Online</span>
         </Link>
 
         <nav className="hidden items-center gap-1 sm:flex" aria-label="Primary">

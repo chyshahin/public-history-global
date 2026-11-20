@@ -2,9 +2,9 @@ import type { Metadata } from "next"
 import { ExternalLink, BookOpen, Mic, ShieldCheck } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Support | Public History Global",
+  title: "Support | PublicHistory.Online",
   description:
-    "Support independent, source-based history writing and podcasting from Public History Global.",
+    "Support independent, source-based history writing and podcasting from PublicHistory.Online.",
 }
 
 const PAYPAL_URL = "https://www.paypal.com/donate/?hosted_button_id=REPLACE_WITH_YOUR_ID"
@@ -18,7 +18,7 @@ export default function SupportPage() {
           Keep independent history writing going
         </h1>
         <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-          Public History Global is reader- and listener-supported. Contributions go directly
+          PublicHistory.Online is reader- and listener-supported. Contributions go directly
           toward research time, audio production, and keeping our work free and ad-light for
           everyone.
         </p>
