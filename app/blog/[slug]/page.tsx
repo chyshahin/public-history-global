@@ -1,4 +1,6 @@
 import type { Metadata } from "next"
+import { readFileSync } from "node:fs"
+import { join } from "node:path"
 import Link from "next/link"
 import Image from "next/image"
 import { notFound } from "next/navigation"
@@ -70,13 +72,52 @@ export default async function BlogPostPage({
         <Image src={post.image || "/placeholder.svg"} alt="" fill className="object-cover" />
       </div>
 
-      <div className="mt-10 space-y-6">
-        {post.body.map((paragraph, i) => (
-          <p key={i} className="text-base leading-relaxed text-foreground/90 sm:text-lg">
-            {paragraph}
-          </p>
-        ))}
-      </div>
+      {slug === "indian-cotton-globalisation-industrialisation" ? (
+        <div className="mt-10 space-y-6">
+          {readFileSync(
+            join(process.cwd(), "public/indian-cotton-article.txt"),
+            "utf8",
+          )
+            .split(/\r?\n/)
+            .slice(3)
+            .map((line, index) => {
+              const text = line.trim()
+              if (!text) return null
+              const sectionHeadings = new Set([
+                "INTRODUCTION",
+                "Indian Cotton, History, Trade, and Globalisation",
+                "Globalisation and Indian Cotton",
+                "Empire, Imitation and Industrialisation",
+                "Summary",
+                "Conclusion",
+                "Bibliography",
+              ])
+              return sectionHeadings.has(text) ? (
+                <h2
+                  key={index}
+                  className="pt-4 font-serif text-2xl font-semibold text-foreground sm:text-3xl"
+                >
+                  {text}
+                </h2>
+              ) : (
+                <p
+                  key={index}
+                  className="text-base leading-relaxed text-foreground/90 sm:text-lg"
+                >
+                  {text}
+                </p>
+              )
+            })}
+        </div>
+      ) : (
+        <div className="mt-10 space-y-6">
+          {post.body.map((paragraph, i) => (
+            <p key={i} className="text-base leading-relaxed text-foreground/90 sm:text-lg">
+              {paragraph}
+            </p>
+          ))}
+        </div>
+      )}
     </article>
   )
 }

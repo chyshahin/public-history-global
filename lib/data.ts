@@ -17,6 +17,18 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "indian-cotton-globalisation-industrialisation",
+    title: "The Profound Influence of Indian Cotton on Globalisation and Industrialisation",
+    excerpt:
+      "Explore how Indian cotton connected trade networks across the world and influenced empire, technology, and industrialisation.",
+    body: [],
+    author: "Chy Shahin",
+    date: "2025-12-21",
+    region: "Global History",
+    readTime: "20 min read",
+    image: "/hero-archive-historical-maps.png",
+  },
+  {
     slug: "silk-road-exchange-networks",
     title: "Beyond the Silk Road: Rethinking Eurasia's Exchange Networks",
     excerpt:
