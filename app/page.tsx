@@ -54,16 +54,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Recent works */}
+      {/* Historical quotation */}
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-        <div className="border border-border bg-card px-6 py-16 text-center sm:px-10 sm:py-24">
-          <h2 className="font-serif text-2xl font-semibold text-foreground sm:text-3xl">
-            Recent works
-          </h2>
-          <p className="mt-4 text-lg font-semibold tracking-wide text-primary uppercase sm:text-2xl">
-            Check back soon
-          </p>
-        </div>
+        <figure className="mx-auto max-w-4xl border border-border bg-card px-6 py-10 sm:px-10 sm:py-14">
+          <blockquote className="border-l-2 border-primary pl-5 font-serif text-lg leading-relaxed text-foreground sm:pl-7 sm:text-xl">
+            <p>
+              In evolutionary time, Homo sapiens emerged very recently, no more than 200,000 years ago. Humans have not physically evolved since, apart from some minor and inherently meaningless variations in skin color, hair, and body shape. According to the latest scientific research, everyone alive today is descended from a small group of anatomically modern humans, Homo sapiens, which emerged in East Africa. Recent genetic studies demonstrate that all mitochondria within human cells descend from a single woman, who lived in Africa between 150,000 and 200,000 years ago.
+            </p>
+          </blockquote>
+          <figcaption className="mt-6 pl-5 text-sm text-muted-foreground sm:pl-7">
+            (Kevin Kenny, <cite>Diaspora: A Very Short Introduction</cite> (Oxford: Oxford University Press, 2013), P.17)
+          </figcaption>
+        </figure>
       </section>
     </div>
   )
