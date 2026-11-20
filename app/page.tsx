@@ -33,7 +33,7 @@ export default function HomePage() {
             Public Debates and Global History
           </h1>
           <p className="mx-auto mt-3 max-w-2xl text-balance leading-relaxed text-muted-foreground sm:text-lg">
-            PublicHistoryGlobal is dedicated to enhancing understanding of historical contexts by
+            PublicHistoryOnline is dedicated to enhancing understanding of historical contexts by
             facilitating collaborative discussions and insights, especially in an era characterised
             by the rise of &apos;alternative&apos; information, to foster social cohesion, tolerance, and
             peaceful coexistence—emphasising historical and rational arguments, which are a
