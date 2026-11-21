@@ -57,21 +57,23 @@ export default async function BlogPostPage({
           Back to blog
         </Link>
 
-        <header className="mt-6">
-        <p className="text-xs font-semibold tracking-widest text-primary uppercase">
-          {post.region}
-        </p>
-        <h1 className="mt-3 font-serif text-3xl leading-tight font-semibold text-balance text-foreground sm:text-4xl">
-          {post.title}
-        </h1>
-        <div className="mt-4 flex items-center gap-3 text-sm text-muted-foreground">
-          <span>{post.author}</span>
-          <span>·</span>
-          <span>{formatDate(post.date)}</span>
-          <span>·</span>
-          <span>{post.readTime}</span>
-        </div>
-      </header>
+        {slug !== "bangladesh-july-24-revolution" ? (
+          <header className="mt-6">
+            <p className="text-xs font-semibold tracking-widest text-primary uppercase">
+              {post.region}
+            </p>
+            <h1 className="mt-3 font-serif text-3xl leading-tight font-semibold text-balance text-foreground sm:text-4xl">
+              {post.title}
+            </h1>
+            <div className="mt-4 flex items-center gap-3 text-sm text-muted-foreground">
+              <span>{post.author}</span>
+              <span>·</span>
+              <span>{formatDate(post.date)}</span>
+              <span>·</span>
+              <span>{post.readTime}</span>
+            </div>
+          </header>
+        ) : null}
 
       {post.image ? (
         <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-sm border border-border">
@@ -117,20 +119,9 @@ export default async function BlogPostPage({
             })}
         </div>
       ) : slug === "bangladesh-july-24-revolution" ? (
-        <div className="mt-10">
-          <iframe
-            src="/july-24-revolution.pdf"
-            title="Original PDF: Bangladesh and the July 24 revolution"
-            className="h-[80vh] min-h-[32rem] w-full rounded-sm border border-border"
-          />
-          <a
-            href="/july-24-revolution.pdf"
-            download
-            className="mt-4 inline-flex text-sm font-medium text-primary underline underline-offset-4"
-          >
-            Download the original PDF
-          </a>
-        </div>
+        <pre className="mt-10 whitespace-pre-wrap break-words font-sans text-base leading-relaxed text-foreground/90 sm:text-lg">
+          {readFileSync(join(process.cwd(), "public/july-24-revolution.txt"), "utf8")}
+        </pre>
       ) : (
         <div className="mt-10 space-y-6">
           {post.body.map((paragraph, i) => (
