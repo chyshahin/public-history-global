@@ -130,7 +130,9 @@ export const blogPosts: BlogPost[] = [
     readTime: "8 min read",
     image: "/columbian-exchange-crops-historical-illustration.png",
   },
-]
+].filter(
+  (post) => post.slug === "indian-cotton-globalisation-industrialisation",
+)
 
 export type PodcastEpisode = {
   slug: string
