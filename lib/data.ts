@@ -29,6 +29,18 @@ export const blogPosts: BlogPost[] = [
     image: "/indian-cotton-global-history.png",
   },
   {
+    slug: "bangladesh-july-24-revolution",
+    title: "Bangladesh and the July 24 revolution",
+    excerpt:
+      "The Bangladeshi students have played a significant role in the country's independence and development as a nation-state.",
+    body: [],
+    author: "Chy Shahin",
+    date: "2025",
+    region: "Bangladesh",
+    readTime: "PDF document",
+    image: "",
+  },
+  {
     slug: "silk-road-exchange-networks",
     title: "Beyond the Silk Road: Rethinking Eurasia's Exchange Networks",
     excerpt:
@@ -130,8 +142,11 @@ export const blogPosts: BlogPost[] = [
     readTime: "8 min read",
     image: "/columbian-exchange-crops-historical-illustration.png",
   },
-].filter(
-  (post) => post.slug === "indian-cotton-globalisation-industrialisation",
+].filter((post) =>
+  [
+    "indian-cotton-globalisation-industrialisation",
+    "bangladesh-july-24-revolution",
+  ].includes(post.slug),
 )
 
 export type PodcastEpisode = {
