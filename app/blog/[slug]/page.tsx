@@ -45,6 +45,12 @@ export default async function BlogPostPage({
   const post = blogPosts.find((p) => p.slug === slug)
   if (!post) notFound()
 
+  const northamptonText =
+    slug === "unveiling-northampton-castle-history"
+      ? readFileSync(join(process.cwd(), "public/northampton-castle-article.txt"), "utf8")
+      : ""
+  const [northamptonTitle = "", ...northamptonBodyLines] = northamptonText.split(/\r?\n/)
+
   return (
     <>
       <BlogBanner />
@@ -57,7 +63,8 @@ export default async function BlogPostPage({
           Back to blog
         </Link>
 
-        {slug !== "bangladesh-july-24-revolution" ? (
+        {slug !== "bangladesh-july-24-revolution" &&
+        slug !== "unveiling-northampton-castle-history" ? (
           <header className="mt-6">
             <p className="text-xs font-semibold tracking-widest text-primary uppercase">
               {post.region}
@@ -122,6 +129,23 @@ export default async function BlogPostPage({
         <pre className="mt-10 whitespace-pre-wrap break-words font-sans text-base leading-relaxed text-foreground/90 sm:text-lg">
           {readFileSync(join(process.cwd(), "public/july-24-revolution.txt"), "utf8")}
         </pre>
+      ) : slug === "unveiling-northampton-castle-history" ? (
+        <div className="mt-6">
+          <h1 className="font-serif text-3xl leading-tight font-semibold text-balance text-foreground sm:text-4xl">
+            {northamptonTitle}
+          </h1>
+          <Image
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Northampton%20Castle_%20Fortress%20to%20Park-b8CrduS3zNxd0PD5EHV4DbTvc44rXt.png"
+            alt="A timeline infographic tracing Northampton Castle from its 11th-century Norman motte and bailey to the modern Castle Park."
+            width={1680}
+            height={940}
+            unoptimized
+            className="mt-6 h-auto w-full rounded-sm border border-border"
+          />
+          <pre className="mt-8 whitespace-pre-wrap break-words font-sans text-base leading-relaxed text-foreground/90 sm:text-lg">
+            {northamptonBodyLines.join("\n")}
+          </pre>
+        </div>
       ) : (
         <div className="mt-10 space-y-6">
           {post.body.map((paragraph, i) => (

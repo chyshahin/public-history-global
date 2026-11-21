@@ -41,6 +41,18 @@ export const blogPosts: BlogPost[] = [
     image: "",
   },
   {
+    slug: "unveiling-northampton-castle-history",
+    title: "Unveiling Northampton Castle: A Captivating Journey Through History",
+    excerpt:
+      "Northampton Castle possesses a deep and significant history within England. Constructed by the Normans in the second half of the 11th century, shortly after their conquest of England in 1066, the castle stands as one of the most important fortifications of the period.",
+    body: [],
+    author: "Chy Shahin",
+    date: "2026",
+    region: "Northamptonshire",
+    readTime: "Full text",
+    image: "",
+  },
+  {
     slug: "silk-road-exchange-networks",
     title: "Beyond the Silk Road: Rethinking Eurasia's Exchange Networks",
     excerpt:
@@ -146,6 +158,7 @@ export const blogPosts: BlogPost[] = [
   [
     "indian-cotton-globalisation-industrialisation",
     "bangladesh-july-24-revolution",
+    "unveiling-northampton-castle-history",
   ].includes(post.slug),
 )
 
