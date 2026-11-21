@@ -37,7 +37,7 @@ export const blogPosts: BlogPost[] = [
     author: "Chy Shahin",
     date: "2025",
     region: "Bangladesh",
-    readTime: "PDF document",
+    readTime: "Full text",
     image: "",
   },
   {
