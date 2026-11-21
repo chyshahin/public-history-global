@@ -9,6 +9,8 @@ import { blogPosts } from "@/lib/data"
 import { BlogBanner } from "@/components/blog-banner"
 
 function formatDate(dateStr: string) {
+  if (/^\d{4}$/.test(dateStr)) return dateStr
+
   return new Date(dateStr).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
@@ -71,9 +73,11 @@ export default async function BlogPostPage({
         </div>
       </header>
 
-      <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-sm border border-border">
-        <Image src={post.image || "/placeholder.svg"} alt="" fill className="object-cover" />
-      </div>
+      {post.image ? (
+        <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-sm border border-border">
+          <Image src={post.image} alt="" fill className="object-cover" />
+        </div>
+      ) : null}
 
       {slug === "indian-cotton-globalisation-industrialisation" ? (
         <div className="mt-10 space-y-6">
@@ -111,6 +115,21 @@ export default async function BlogPostPage({
                 </p>
               )
             })}
+        </div>
+      ) : slug === "bangladesh-july-24-revolution" ? (
+        <div className="mt-10">
+          <iframe
+            src="/july-24-revolution.pdf"
+            title="Original PDF: Bangladesh and the July 24 revolution"
+            className="h-[80vh] min-h-[32rem] w-full rounded-sm border border-border"
+          />
+          <a
+            href="/july-24-revolution.pdf"
+            download
+            className="mt-4 inline-flex text-sm font-medium text-primary underline underline-offset-4"
+          >
+            Download the original PDF
+          </a>
         </div>
       ) : (
         <div className="mt-10 space-y-6">

@@ -9,6 +9,8 @@ export const metadata: Metadata = {
 }
 
 function formatDate(dateStr: string) {
+  if (/^\d{4}$/.test(dateStr)) return dateStr
+
   return new Date(dateStr).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
