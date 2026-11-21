@@ -17,6 +17,18 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "unveiling-northampton-castle-history",
+    title: "Unveiling Northampton Castle: A Captivating Journey Through History",
+    excerpt:
+      "Northampton Castle possesses a deep and significant history within England. Constructed by the Normans in the second half of the 11th century, shortly after their conquest of England in 1066, the castle stands as one of the most important fortifications of the period.",
+    body: [],
+    author: "Chy Shahin",
+    date: "2026",
+    region: "Northamptonshire",
+    readTime: "Full text",
+    image: "",
+  },
+  {
     slug: "indian-cotton-globalisation-industrialisation",
     title: "The Profound Influence of Indian Cotton on Globalisation and Industrialisation",
     excerpt:
@@ -37,18 +49,6 @@ export const blogPosts: BlogPost[] = [
     author: "Chy Shahin",
     date: "2025",
     region: "Bangladesh",
-    readTime: "Full text",
-    image: "",
-  },
-  {
-    slug: "unveiling-northampton-castle-history",
-    title: "Unveiling Northampton Castle: A Captivating Journey Through History",
-    excerpt:
-      "Northampton Castle possesses a deep and significant history within England. Constructed by the Normans in the second half of the 11th century, shortly after their conquest of England in 1066, the castle stands as one of the most important fortifications of the period.",
-    body: [],
-    author: "Chy Shahin",
-    date: "2026",
-    region: "Northamptonshire",
     readTime: "Full text",
     image: "",
   },
