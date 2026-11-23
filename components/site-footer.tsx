@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Mail, MapPin, Landmark } from "lucide-react"
+import { Mail, Landmark } from "lucide-react"
 
 export function SiteFooter() {
   return (
@@ -54,10 +54,6 @@ export function SiteFooter() {
                 <a href="mailto:editors@publichistoryglobal.org" className="hover:text-primary">
                   editors@publichistoryglobal.org
                 </a>
-              </li>
-              <li className="flex items-start gap-2">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
-                <span>PublicHistory.Online, PO Box 1848, Remote Editorial Collective</span>
               </li>
             </ul>
           </div>
