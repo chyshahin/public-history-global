@@ -4,6 +4,7 @@ import { Lato } from 'next/font/google'
 import { SiteHeader } from '@/components/site-header'
 import { SocialLinksBanner } from '@/components/social-links-banner'
 import { SiteFooter } from '@/components/site-footer'
+import { SiteBackground } from '@/components/site-background'
 import './globals.css'
 
 const lato = Lato({
@@ -50,12 +51,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`dark bg-background ${lato.variable}`}>
       <body className="antialiased font-sans">
-        <div className="flex min-h-screen flex-col">
+        <SiteBackground>
           <SocialLinksBanner />
           <SiteHeader />
           <main className="flex-1">{children}</main>
           <SiteFooter />
-        </div>
+        </SiteBackground>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
