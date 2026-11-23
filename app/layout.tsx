@@ -1,20 +1,15 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Source_Serif_4, Inter } from 'next/font/google'
+import { Lato } from 'next/font/google'
 import { SiteHeader } from '@/components/site-header'
 import { SocialLinksBanner } from '@/components/social-links-banner'
 import { SiteFooter } from '@/components/site-footer'
 import './globals.css'
 
-const sourceSerif = Source_Serif_4({
+const lato = Lato({
   subsets: ['latin'],
-  variable: '--font-serif',
-  display: 'swap',
-})
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-sans',
+  weight: ['400', '700'],
+  variable: '--font-lato',
   display: 'swap',
 })
 
@@ -53,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`dark bg-background ${sourceSerif.variable} ${inter.variable}`}>
+    <html lang="en" className={`dark bg-background ${lato.variable}`}>
       <body className="antialiased font-sans">
         <div className="flex min-h-screen flex-col">
           <SocialLinksBanner />
