@@ -119,6 +119,13 @@
 }
 
 .site-image-background {
+  --foreground: oklch(0.98 0.02 88);
+  --card-foreground: var(--foreground);
+  --popover-foreground: var(--foreground);
+  --secondary-foreground: var(--foreground);
+  --muted-foreground: oklch(0.9 0.028 88);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-accent-foreground: var(--foreground);
   position: relative;
   isolation: isolate;
   background-color: var(--background);
