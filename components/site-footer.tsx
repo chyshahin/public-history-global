@@ -1,5 +1,7 @@
+import Image from "next/image"
 import Link from "next/link"
 import { Mail, Landmark } from "lucide-react"
+import { socialLinks } from "@/lib/social-links"
 
 export function SiteFooter() {
   return (
@@ -55,6 +57,27 @@ export function SiteFooter() {
                   editors@publichistoryglobal.org
                 </a>
               </li>
+              {socialLinks.map((contact) => (
+                <li key={contact.label} className="flex items-center gap-2">
+                  <Image
+                    src={contact.icon}
+                    width={16}
+                    height={16}
+                    alt=""
+                    aria-hidden="true"
+                    className="size-4 shrink-0 object-contain"
+                  />
+                  <a
+                    href={contact.href}
+                    target={contact.external ? "_blank" : undefined}
+                    rel={contact.external ? "noopener noreferrer" : undefined}
+                    aria-label={`${contact.label}: ${contact.value}`}
+                    className="hover:text-primary"
+                  >
+                    {contact.label}: {contact.value}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
