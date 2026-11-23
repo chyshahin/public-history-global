@@ -118,6 +118,33 @@
   --sidebar-ring: oklch(0.74 0.12 75);
 }
 
+.site-image-background {
+  --foreground: oklch(0.98 0.02 88);
+  --card-foreground: var(--foreground);
+  --popover-foreground: var(--foreground);
+  --secondary-foreground: var(--foreground);
+  --muted-foreground: oklch(0.9 0.028 88);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-accent-foreground: var(--foreground);
+  position: relative;
+  isolation: isolate;
+  background-color: var(--background);
+}
+
+.site-image-background::before {
+  position: fixed;
+  z-index: -1;
+  inset: -4px;
+  background-image:
+    linear-gradient(rgba(8, 17, 31, 0.68), rgba(8, 17, 31, 0.68)),
+    url("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/A%20Shared%20History%2C%20Inclusive%20Future-Vujf5hFCpogpKG225SVyrg9lgb7Fxa.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  content: "";
+  filter: blur(2px);
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

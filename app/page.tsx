@@ -1,5 +1,4 @@
 import Link from "next/link"
-import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 
 export default function HomePage() {
@@ -7,17 +6,6 @@ export default function HomePage() {
     <div>
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-border">
-        <div className="absolute inset-0">
-          <Image
-            src="/hero-archive-historical-maps.png"
-            alt=""
-            fill
-            priority
-            className="object-cover opacity-40"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/80 to-background" />
-        </div>
-
         <div className="relative mx-auto max-w-4xl px-4 py-12 text-center sm:px-6 sm:py-16 lg:px-8">
           <figure className="mx-auto mb-8 max-w-3xl text-left sm:mb-10">
             <blockquote className="border-l-2 border-primary pl-5 font-serif text-sm leading-relaxed text-foreground sm:pl-7 sm:text-base">
