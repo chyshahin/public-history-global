@@ -1,21 +1,33 @@
+import Image from "next/image"
+
 const socialLinks = [
   {
     label: "X",
-    value: "Chyshahin",
+    value: "Chy Shahin",
     href: "https://x.com/Chyshahin",
+    icon: "/social-icons/x.svg",
     external: true,
   },
   {
     label: "Facebook",
-    value: "Chyshahin",
+    value: "Chy Shahin",
     href: "https://www.facebook.com/Chyshahin",
+    icon: "/social-icons/facebook.svg",
     external: true,
   },
   {
-    label: "Email",
+    label: "Yahoo",
     value: "chyshahin@yahoo.co.uk",
     href: "mailto:chyshahin@yahoo.co.uk",
+    icon: "/social-icons/yahoo.svg",
     external: false,
+  },
+  {
+    label: "Instagram",
+    value: "Chy Shahin",
+    href: "https://www.instagram.com/Chyshahin",
+    icon: "/social-icons/instagram.svg",
+    external: true,
   },
 ]
 
@@ -39,7 +51,14 @@ export function SocialLinksBanner() {
                 aria-label={`${link.label}: ${link.value}`}
                 className="inline-flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary focus-visible:text-primary"
               >
-                <span className="font-semibold text-primary">{link.label}</span>
+                <Image
+                  src={link.icon}
+                  width={16}
+                  height={16}
+                  alt=""
+                  aria-hidden="true"
+                  className="size-4 shrink-0 object-contain"
+                />
                 <span>{link.value}</span>
               </a>
             </li>
