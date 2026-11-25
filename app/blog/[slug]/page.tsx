@@ -19,7 +19,7 @@ function formatDate(dateStr: string) {
   })
 }
 
-type ArticleBlock = { type: "heading" | "paragraph"; text: string }
+type ArticleBlock = { type: "heading" | "subheading" | "paragraph"; text: string }
 
 function parseArticleBlocks(lines: string[]): ArticleBlock[] {
   const headings = new Set([
@@ -32,8 +32,9 @@ function parseArticleBlocks(lines: string[]): ArticleBlock[] {
     "The Root of Misinformation and Alternative News",
     "Summary",
     "Conclusion",
-    "Further Readings:",
+    "Bibliography",
   ])
+  const subheadings = new Set(["Further Readings:"])
   const blocks: ArticleBlock[] = []
   let paragraphLines: string[] = []
 
@@ -48,9 +49,20 @@ function parseArticleBlocks(lines: string[]): ArticleBlock[] {
     const text = line.trim()
     if (!text) continue
 
+    if (text.startsWith("i. Kenny, Kevin, Diaspora: A Very Short Introduction")) {
+      flushParagraph()
+      blocks.push({ type: "heading", text: "Bibliography" })
+    }
+
     if (headings.has(text)) {
       flushParagraph()
       blocks.push({ type: "heading", text })
+      continue
+    }
+
+    if (subheadings.has(text)) {
+      flushParagraph()
+      blocks.push({ type: "subheading", text })
       continue
     }
 
@@ -189,6 +201,13 @@ export default async function BlogPostPage({
                 >
                   {block.text}
                 </h2>
+              ) : block.type === "subheading" ? (
+                <h3
+                  key={`${block.type}-${index}`}
+                  className="pt-2 font-serif text-xl font-semibold text-foreground sm:text-2xl"
+                >
+                  {block.text}
+                </h3>
               ) : (
                 <p
                   key={`${block.type}-${index}`}
