@@ -19,6 +19,49 @@ function formatDate(dateStr: string) {
   })
 }
 
+type ArticleBlock = { type: "heading" | "paragraph"; text: string }
+
+function parseArticleBlocks(lines: string[]): ArticleBlock[] {
+  const headings = new Set([
+    "INTRODUCTION",
+    "Global and Public History",
+    "New Media and Information in Recent History",
+    "Media and Global Transformation",
+    "Internet and Digital Media",
+    "Digital Media and Public History",
+    "The Root of Misinformation and Alternative News",
+    "Summary",
+    "Conclusion",
+    "Further Readings:",
+  ])
+  const blocks: ArticleBlock[] = []
+  let paragraphLines: string[] = []
+
+  const flushParagraph = () => {
+    if (paragraphLines.length > 0) {
+      blocks.push({ type: "paragraph", text: paragraphLines.join(" ") })
+      paragraphLines = []
+    }
+  }
+
+  for (const line of lines) {
+    const text = line.trim()
+    if (!text) continue
+
+    if (headings.has(text)) {
+      flushParagraph()
+      blocks.push({ type: "heading", text })
+      continue
+    }
+
+    paragraphLines.push(text)
+    if (/\s{2,}$/.test(line) || /\([ivxlcdm]+\)\s*$/i.test(text)) flushParagraph()
+  }
+
+  flushParagraph()
+  return blocks
+}
+
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }))
 }
@@ -67,6 +110,7 @@ export default async function BlogPostPage({
   const [empoweringTitleFirst = "", empoweringTitleSecond = "", empoweringAuthorLine = "", ...empoweringBodyLines] =
     empoweringArticleText.split("\n")
   const empoweringArticleTitle = `${empoweringTitleFirst.trimEnd()} ${empoweringTitleSecond.trimStart()}`
+  const empoweringArticleBlocks = parseArticleBlocks(empoweringBodyLines)
 
   return (
     <>
@@ -136,9 +180,25 @@ export default async function BlogPostPage({
               {empoweringAuthorLine}
             </p>
           </header>
-          <pre className="mt-8 whitespace-pre-wrap break-words font-sans text-base leading-relaxed text-foreground/90 sm:text-lg">
-            {empoweringBodyLines.join("\n")}
-          </pre>
+          <div className="mt-8 flex flex-col gap-6">
+            {empoweringArticleBlocks.map((block, index) =>
+              block.type === "heading" ? (
+                <h2
+                  key={`${block.type}-${index}`}
+                  className="pt-3 font-serif text-2xl font-semibold text-foreground sm:text-3xl"
+                >
+                  {block.text}
+                </h2>
+              ) : (
+                <p
+                  key={`${block.type}-${index}`}
+                  className="text-base leading-relaxed text-foreground/90 sm:text-lg"
+                >
+                  {block.text}
+                </p>
+              ),
+            )}
+          </div>
           <section className="mt-10 border-t border-border pt-6" aria-labelledby="transcription-source">
             <h2 id="transcription-source" className="font-serif text-xl font-semibold text-foreground">
               Bibliographic source
