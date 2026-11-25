@@ -13,7 +13,6 @@ export type BlogPost = {
   region: string
   readTime: string
   image: string
-  document?: string
 }
 
 export const blogPosts: BlogPost[] = [
@@ -22,22 +21,12 @@ export const blogPosts: BlogPost[] = [
     title: "Empowering Global and Public History: Unlocking the Transformative Potential of Digital Media",
     excerpt:
       "Digital media has connected billions of people to information and debate. This essay traces that shift from the printing press to the internet, examining misinformation and why public historians and subject experts should take a more active role online.",
-    body: [
-      "Over the past half-century, the internet and digital media have transformed how people find and share information. This unprecedented flow has opened new ways to participate in public life, while making it harder to distinguish verified knowledge from misinformation and disinformation. The essay asks how historical context and expert engagement can help people navigate that challenge.",
-      "The author compares the digital information revolution with the spread of the printing press in fifteenth-century Europe. Print helped ideas travel farther, encouraged literacy, and contributed to major religious and social debates. Digital media operates on a far greater scale: people around the world can publish, respond, and encounter information almost instantly.",
-      "The essay frames global history as a shared human story shaped by migration, exchange, and interaction across regions and generations. Bringing this wider perspective into public discussion can help audiences understand how the past informs the present, and how evidence-based historical accounts differ from static or selective narratives.",
-      "Digital platforms have become a central place where people encounter news and debate. Their reach can broaden participation and expose audiences to new perspectives, but unverified claims and emotionally charged posts can also spread quickly. The article argues that public history should meet people in these spaces rather than remain concentrated in museums, books, and academic settings.",
-      "The article also considers the relationship between information, power, and social change. Greater access can help people question established accounts and find perspectives previously kept out of public view. At the same time, the author warns that censorship, political influence, and polarised online debate can make it difficult for reliable information to be heard.",
-      "Freedom to read, write, and exchange ideas supports democratic discussion. For that exchange to be constructive, the essay argues, participants need critical thinking, historical context, and respect for disagreement. Experts can contribute by explaining evidence in accessible ways and by addressing inaccuracies where public conversations are taking place.",
-      "A recurring theme is the distance between academic expertise and everyday online debate. Scholars and specialists often share their work in universities and formal settings, while the largest public conversations happen on digital platforms. The author calls for experts across disciplines to engage more directly with those audiences and help distinguish evidence from unsupported claims.",
-      "The conclusion presents public history as a way to reinforce human connection and support more informed discussion. Digital media and artificial intelligence bring new questions about misinformation, privacy, and unequal access. The essay argues that historians and other experts can help guide these technologies toward a more inclusive public sphere by sharing clear, evidence-based knowledge.",
-    ],
+    body: [],
     author: "Chy Shahin",
     date: "2025-12-07",
     region: "Global History",
     readTime: "20 min read",
     image: "/from-printing-press-to-ai.png",
-    document: "/empowering-global-and-public-history.pdf",
   },
   {
     slug: "unveiling-northampton-castle-history",

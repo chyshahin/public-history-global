@@ -51,6 +51,22 @@ export default async function BlogPostPage({
       ? readFileSync(join(process.cwd(), "public/northampton-castle-article.txt"), "utf8")
       : ""
   const [northamptonTitle = "", ...northamptonBodyLines] = northamptonText.split(/\r?\n/)
+  const empoweringArticleText =
+    slug === "empowering-global-and-public-history"
+      ? readFileSync(
+          join(process.cwd(), "public/empowering-global-and-public-history-article.txt"),
+          "utf8",
+        )
+          .replace(/\r\n?/g, "\n")
+          .split("\n")
+          .filter((line) => !/^\s*\d+\s*$/.test(line))
+          .join("\n")
+          .replace(/\n{3,}/g, "\n\n")
+          .trim()
+      : ""
+  const [empoweringTitleFirst = "", empoweringTitleSecond = "", empoweringAuthorLine = "", ...empoweringBodyLines] =
+    empoweringArticleText.split("\n")
+  const empoweringArticleTitle = `${empoweringTitleFirst.trimEnd()} ${empoweringTitleSecond.trimStart()}`
 
   return (
     <>
@@ -65,7 +81,8 @@ export default async function BlogPostPage({
         </Link>
 
         {slug !== "bangladesh-july-24-revolution" &&
-        slug !== "unveiling-northampton-castle-history" ? (
+        slug !== "unveiling-northampton-castle-history" &&
+        slug !== "empowering-global-and-public-history" ? (
           <header className="mt-6">
             <p className="text-xs font-semibold tracking-widest text-primary uppercase">
               {post.region}
@@ -109,7 +126,29 @@ export default async function BlogPostPage({
         </div>
       ) : null}
 
-      {slug === "indian-cotton-globalisation-industrialisation" ? (
+      {slug === "empowering-global-and-public-history" ? (
+        <>
+          <header className="mt-10">
+            <h1 className="font-serif text-3xl leading-tight font-semibold text-balance text-foreground sm:text-4xl">
+              {empoweringArticleTitle}
+            </h1>
+            <p className="mt-4 text-sm text-muted-foreground sm:text-base">
+              {empoweringAuthorLine}
+            </p>
+          </header>
+          <pre className="mt-8 whitespace-pre-wrap break-words font-sans text-base leading-relaxed text-foreground/90 sm:text-lg">
+            {empoweringBodyLines.join("\n")}
+          </pre>
+          <section className="mt-10 border-t border-border pt-6" aria-labelledby="transcription-source">
+            <h2 id="transcription-source" className="font-serif text-xl font-semibold text-foreground">
+              Bibliographic source
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              Shahin, Chy. “Empowering Global and Public History: Unlocking the Transformative Potential of Digital Media.” PDF manuscript, 7 December 2025. Author-provided source document. The article&apos;s original notes and further readings are reproduced above.
+            </p>
+          </section>
+        </>
+      ) : slug === "indian-cotton-globalisation-industrialisation" ? (
         <div className="mt-10 space-y-6">
           {readFileSync(
             join(process.cwd(), "public/indian-cotton-article.txt"),
@@ -176,17 +215,6 @@ export default async function BlogPostPage({
           ))}
         </div>
       )}
-      {post.document ? (
-        <div className="mt-10 border-t border-border pt-6">
-          <a
-            href={post.document}
-            download
-            className="inline-flex items-center rounded-sm border border-border px-4 py-2.5 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
-          >
-            Download the full article (PDF)
-          </a>
-        </div>
-      ) : null}
       </article>
     </>
   )
