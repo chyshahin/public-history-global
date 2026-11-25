@@ -17,6 +17,18 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "empowering-global-and-public-history",
+    title: "Empowering Global and Public History: Unlocking the Transformative Potential of Digital Media",
+    excerpt:
+      "Digital media has connected billions of people to information and debate. This essay traces that shift from the printing press to the internet, examining misinformation and why public historians and subject experts should take a more active role online.",
+    body: [],
+    author: "Chy Shahin",
+    date: "2025-12-07",
+    region: "Global History",
+    readTime: "20 min read",
+    image: "/from-printing-press-to-ai.png",
+  },
+  {
     slug: "unveiling-northampton-castle-history",
     title: "Unveiling Northampton Castle: A Captivating Journey Through History",
     excerpt:
@@ -156,6 +168,7 @@ export const blogPosts: BlogPost[] = [
   },
 ].filter((post) =>
   [
+    "empowering-global-and-public-history",
     "indian-cotton-globalisation-industrialisation",
     "bangladesh-july-24-revolution",
     "unveiling-northampton-castle-history",

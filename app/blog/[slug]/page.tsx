@@ -7,6 +7,7 @@ import { notFound } from "next/navigation"
 import { ArrowLeft } from "lucide-react"
 import { blogPosts } from "@/lib/data"
 import { BlogBanner } from "@/components/blog-banner"
+import { cn } from "@/lib/utils"
 
 function formatDate(dateStr: string) {
   if (/^\d{4}$/.test(dateStr)) return dateStr
@@ -16,6 +17,61 @@ function formatDate(dateStr: string) {
     month: "long",
     day: "numeric",
   })
+}
+
+type ArticleBlock = { type: "heading" | "subheading" | "paragraph"; text: string }
+
+function parseArticleBlocks(lines: string[]): ArticleBlock[] {
+  const headings = new Set([
+    "INTRODUCTION",
+    "Global and Public History",
+    "New Media and Information in Recent History",
+    "Media and Global Transformation",
+    "Internet and Digital Media",
+    "Digital Media and Public History",
+    "The Root of Misinformation and Alternative News",
+    "Summary",
+    "Conclusion",
+    "Bibliography",
+  ])
+  const subheadings = new Set(["Further Readings:"])
+  const blocks: ArticleBlock[] = []
+  let paragraphLines: string[] = []
+
+  const flushParagraph = () => {
+    if (paragraphLines.length > 0) {
+      blocks.push({ type: "paragraph", text: paragraphLines.join(" ") })
+      paragraphLines = []
+    }
+  }
+
+  for (const line of lines) {
+    const text = line.trim()
+    if (!text) continue
+
+    if (text.startsWith("i. Kenny, Kevin, Diaspora: A Very Short Introduction")) {
+      flushParagraph()
+      blocks.push({ type: "heading", text: "Bibliography" })
+    }
+
+    if (headings.has(text)) {
+      flushParagraph()
+      blocks.push({ type: "heading", text })
+      continue
+    }
+
+    if (subheadings.has(text)) {
+      flushParagraph()
+      blocks.push({ type: "subheading", text })
+      continue
+    }
+
+    paragraphLines.push(text)
+    if (/\s{2,}$/.test(line) || /\([ivxlcdm]+\)\s*$/i.test(text)) flushParagraph()
+  }
+
+  flushParagraph()
+  return blocks
 }
 
 export function generateStaticParams() {
@@ -50,6 +106,23 @@ export default async function BlogPostPage({
       ? readFileSync(join(process.cwd(), "public/northampton-castle-article.txt"), "utf8")
       : ""
   const [northamptonTitle = "", ...northamptonBodyLines] = northamptonText.split(/\r?\n/)
+  const empoweringArticleText =
+    slug === "empowering-global-and-public-history"
+      ? readFileSync(
+          join(process.cwd(), "public/empowering-global-and-public-history-article.txt"),
+          "utf8",
+        )
+          .replace(/\r\n?/g, "\n")
+          .split("\n")
+          .filter((line) => !/^\s*\d+\s*$/.test(line))
+          .join("\n")
+          .replace(/\n{3,}/g, "\n\n")
+          .trim()
+      : ""
+  const [empoweringTitleFirst = "", empoweringTitleSecond = "", empoweringAuthorLine = "", ...empoweringBodyLines] =
+    empoweringArticleText.split("\n")
+  const empoweringArticleTitle = `${empoweringTitleFirst.trimEnd()} ${empoweringTitleSecond.trimStart()}`
+  const empoweringArticleBlocks = parseArticleBlocks(empoweringBodyLines)
 
   return (
     <>
@@ -64,7 +137,8 @@ export default async function BlogPostPage({
         </Link>
 
         {slug !== "bangladesh-july-24-revolution" &&
-        slug !== "unveiling-northampton-castle-history" ? (
+        slug !== "unveiling-northampton-castle-history" &&
+        slug !== "empowering-global-and-public-history" ? (
           <header className="mt-6">
             <p className="text-xs font-semibold tracking-widest text-primary uppercase">
               {post.region}
@@ -83,12 +157,77 @@ export default async function BlogPostPage({
         ) : null}
 
       {post.image ? (
-        <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-sm border border-border">
-          <Image src={post.image} alt="" fill className="object-cover" />
+        <div
+          className={cn(
+            "relative mt-8 overflow-hidden rounded-sm border border-border",
+            post.slug === "empowering-global-and-public-history"
+              ? "aspect-[3/2] bg-background"
+              : "aspect-[16/9]",
+          )}
+        >
+          <Image
+            src={post.image}
+            alt={
+              post.slug === "empowering-global-and-public-history"
+                ? "Infographic comparing the printing press, digital media, and generative AI as communication revolutions shaping global debate."
+                : ""
+            }
+            fill
+            className={
+              post.slug === "empowering-global-and-public-history"
+                ? "object-contain"
+                : "object-cover"
+            }
+          />
         </div>
       ) : null}
 
-      {slug === "indian-cotton-globalisation-industrialisation" ? (
+      {slug === "empowering-global-and-public-history" ? (
+        <>
+          <header className="mt-10">
+            <h1 className="font-serif text-3xl leading-tight font-semibold text-balance text-foreground sm:text-4xl">
+              {empoweringArticleTitle}
+            </h1>
+            <p className="mt-4 text-sm text-muted-foreground sm:text-base">
+              {empoweringAuthorLine}
+            </p>
+          </header>
+          <div className="mt-8 flex flex-col gap-6">
+            {empoweringArticleBlocks.map((block, index) =>
+              block.type === "heading" ? (
+                <h2
+                  key={`${block.type}-${index}`}
+                  className="pt-3 font-serif text-2xl font-semibold text-foreground sm:text-3xl"
+                >
+                  {block.text}
+                </h2>
+              ) : block.type === "subheading" ? (
+                <h3
+                  key={`${block.type}-${index}`}
+                  className="pt-2 font-serif text-xl font-semibold text-foreground sm:text-2xl"
+                >
+                  {block.text}
+                </h3>
+              ) : (
+                <p
+                  key={`${block.type}-${index}`}
+                  className="text-base leading-relaxed text-foreground/90 sm:text-lg"
+                >
+                  {block.text}
+                </p>
+              ),
+            )}
+          </div>
+          <section className="mt-10 border-t border-border pt-6" aria-labelledby="transcription-source">
+            <h2 id="transcription-source" className="font-serif text-xl font-semibold text-foreground">
+              Bibliographic source
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              Shahin, Chy. “Empowering Global and Public History: Unlocking the Transformative Potential of Digital Media.” PDF manuscript, 7 December 2025. Author-provided source document. The article&apos;s original notes and further readings are reproduced above.
+            </p>
+          </section>
+        </>
+      ) : slug === "indian-cotton-globalisation-industrialisation" ? (
         <div className="mt-10 space-y-6">
           {readFileSync(
             join(process.cwd(), "public/indian-cotton-article.txt"),

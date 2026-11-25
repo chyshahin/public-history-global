@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { blogPosts } from "@/lib/data"
 import { BlogBanner } from "@/components/blog-banner"
+import { FeaturedBlogCard } from "@/components/featured-blog-card"
 export const metadata: Metadata = {
   title: "Blog | PublicHistory.Online",
   description:
@@ -34,8 +35,10 @@ export default function BlogPage() {
           </p>
         </header>
 
-        <section className="mt-10 grid gap-5 sm:mt-12" aria-label="Blog posts">
-          {blogPosts.map((post) => (
+        <FeaturedBlogCard className="mt-10 sm:mt-12" />
+
+        <section className="mt-6 grid gap-5 sm:mt-8" aria-label="More blog posts">
+          {blogPosts.slice(1).map((post) => (
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
