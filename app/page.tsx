@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
+import { FeaturedBlogCard } from "@/components/featured-blog-card"
 
 export default function HomePage() {
   return (
@@ -31,6 +32,7 @@ export default function HomePage() {
             of these debates, their evolution over time, and their ongoing influence on contemporary
             discourse. Join us in exploring key narratives that are shaping our world.
           </p>
+          <FeaturedBlogCard className="mt-9 text-left" />
           <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/blog"

@@ -7,6 +7,7 @@ import { notFound } from "next/navigation"
 import { ArrowLeft } from "lucide-react"
 import { blogPosts } from "@/lib/data"
 import { BlogBanner } from "@/components/blog-banner"
+import { cn } from "@/lib/utils"
 
 function formatDate(dateStr: string) {
   if (/^\d{4}$/.test(dateStr)) return dateStr
@@ -83,8 +84,28 @@ export default async function BlogPostPage({
         ) : null}
 
       {post.image ? (
-        <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-sm border border-border">
-          <Image src={post.image} alt="" fill className="object-cover" />
+        <div
+          className={cn(
+            "relative mt-8 overflow-hidden rounded-sm border border-border",
+            post.slug === "empowering-global-and-public-history"
+              ? "aspect-[3/2] bg-background"
+              : "aspect-[16/9]",
+          )}
+        >
+          <Image
+            src={post.image}
+            alt={
+              post.slug === "empowering-global-and-public-history"
+                ? "Infographic comparing the printing press, digital media, and generative AI as communication revolutions shaping global debate."
+                : ""
+            }
+            fill
+            className={
+              post.slug === "empowering-global-and-public-history"
+                ? "object-contain"
+                : "object-cover"
+            }
+          />
         </div>
       ) : null}
 
@@ -155,6 +176,17 @@ export default async function BlogPostPage({
           ))}
         </div>
       )}
+      {post.document ? (
+        <div className="mt-10 border-t border-border pt-6">
+          <a
+            href={post.document}
+            download
+            className="inline-flex items-center rounded-sm border border-border px-4 py-2.5 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+          >
+            Download the full article (PDF)
+          </a>
+        </div>
+      ) : null}
       </article>
     </>
   )
