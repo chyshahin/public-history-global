@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Mail, Landmark } from "lucide-react"
+import { Landmark } from "lucide-react"
 import { socialLinks } from "@/lib/social-links"
 
 export function SiteFooter() {
@@ -51,12 +51,6 @@ export function SiteFooter() {
               Contact
             </h2>
             <ul className="mt-3 space-y-2 text-sm text-foreground/80">
-              <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-primary" aria-hidden="true" />
-                <a href="mailto:editors@publichistoryglobal.org" className="hover:text-primary">
-                  editors@publichistoryglobal.org
-                </a>
-              </li>
               {socialLinks.map((contact) => (
                 <li key={contact.label} className="flex items-center gap-2">
                   <Image
